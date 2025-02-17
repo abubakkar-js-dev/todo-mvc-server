@@ -5,10 +5,11 @@ const categorySchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    todos: {
+    todos:[ {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-    }
+        ref: 'Todo',
+    }]
 },{timestamps: true})
 
 
