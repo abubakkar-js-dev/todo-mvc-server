@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectMongoDb = require('./src/db');
+const todosRouter = require('./src/routes/userRoute');
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -13,8 +14,12 @@ app.use(express.json());
 
 
 // connect mongodb
-connectMongoDb(process.env.DB_URI)
+connectMongoDb(process.env.DB_URI);
 
+
+// routes
+
+app.use('/api/todos',todosRouter);
 
 
 app.get('/',(req,res)=>{
